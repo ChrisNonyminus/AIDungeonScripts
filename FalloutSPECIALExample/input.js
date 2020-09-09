@@ -35,13 +35,11 @@ const modifier = (text) => {
   if (modifiedText.includes('> You')){
     modifiedText = "\n> You attempt to " + text.substring(7)
   }
-  if (!modifiedText.includes('> You')){
-    
   for (let i = 0 ; i < 11; i++)
   {
     if (text.includes((i+1)+' Strength') || text.includes('S'+(i+1)) || text.includes('Strength '+(i+1)) || text.includes('STR '+(i+1)))
     {
-    playerStrength = i;
+    playerStrength = i
     }
   }
   for (let i = 0 ; i < 11; i++)
@@ -145,7 +143,7 @@ const modifier = (text) => {
   {
   unarmedBonus += 15
   }
-  }
+  
   
   state.memory = state.memory + '\nYou are level '+playerLevel+'.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerStrength] +' strength.'
@@ -157,10 +155,7 @@ const modifier = (text) => {
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerLuck] +' luck.'
   state.memory = state.memory + '\nYour skills:\nBarter: '+(2+(2*playerCharisma)+(playerLuck/2)+barterBonus)+'\nEnergy Weapons: '+(2+(2*playerPerception)+(playerLuck/2)+energyWepBonus)+'\nExplosives: '+(2+(2*playerPerception)+(playerLuck/2)+explosivesBonus)+'\nGuns: '+(2+(2*playerAgility)+(playerLuck/2)+gunsBonus)+'\nLockpick: '+(2+(2*playerPerception)+(playerLuck/2)+lockpickBonus)+'\nMedicine: '+(2+(2*playerIntelligence)+(playerLuck/2)+medicineBonus)+'\nMelee Weapons: '+(2+(2*playerStrength)+(playerLuck/2)+meleeWepBonus)+'\nRepair: '+(2+(2*playerIntelligence)+(playerLuck/2)+repairBonus)+'\nScience: '+(2+(2*playerIntelligence)+(playerLuck/2)+scienceBonus)+'\nSneak: '+(2+(2*playerAgility)+(playerLuck/2)+sneakBonus)+'\nSpeech: '+(2+(2*playerCharisma)+(playerLuck/2)+speechBonus)+'\nSurvival: '+(2+(2*playerEndurance)+(playerLuck/2)+survivalBonus)+'\nUnarmed: '+(2+(2*playerEndurance)+(playerLuck/2)+unarmedBonus)
   state.memory = state.memory + '\nYour traits:\n'+playerTraits
-  if(text.includes'/check'){
-  state.message = state.message + JSON.stringify(state.memory);
-  //modifiedText=''
-  }
+  
   // You must return an object with the text property defined.
   return {text: modifiedText}
 }

@@ -1,5 +1,4 @@
 /*
-Adds "you attempt to" in front of every player input, and attempts to implement stats and skills
 */
 const modifier = (text) => {
  
@@ -144,7 +143,8 @@ const modifier = (text) => {
   unarmedBonus += 15
   }
   
-  
+  if(!text.includes('> You') && text.includes('Your name is ') || text.includes('You are ') && !text.includes('> You'))
+  {
   state.memory = state.memory + '\nYou are level '+playerLevel+'.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerStrength] +' strength.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerPerception] +' perception.'
@@ -155,6 +155,7 @@ const modifier = (text) => {
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerLuck] +' luck.'
   state.memory = state.memory + '\nYour skills:\nBarter: '+(2+(2*playerCharisma)+(playerLuck/2)+barterBonus)+'\nEnergy Weapons: '+(2+(2*playerPerception)+(playerLuck/2)+energyWepBonus)+'\nExplosives: '+(2+(2*playerPerception)+(playerLuck/2)+explosivesBonus)+'\nGuns: '+(2+(2*playerAgility)+(playerLuck/2)+gunsBonus)+'\nLockpick: '+(2+(2*playerPerception)+(playerLuck/2)+lockpickBonus)+'\nMedicine: '+(2+(2*playerIntelligence)+(playerLuck/2)+medicineBonus)+'\nMelee Weapons: '+(2+(2*playerStrength)+(playerLuck/2)+meleeWepBonus)+'\nRepair: '+(2+(2*playerIntelligence)+(playerLuck/2)+repairBonus)+'\nScience: '+(2+(2*playerIntelligence)+(playerLuck/2)+scienceBonus)+'\nSneak: '+(2+(2*playerAgility)+(playerLuck/2)+sneakBonus)+'\nSpeech: '+(2+(2*playerCharisma)+(playerLuck/2)+speechBonus)+'\nSurvival: '+(2+(2*playerEndurance)+(playerLuck/2)+survivalBonus)+'\nUnarmed: '+(2+(2*playerEndurance)+(playerLuck/2)+unarmedBonus)
   state.memory = state.memory + '\nYour traits:\n'+playerTraits
+  }
   
   // You must return an object with the text property defined.
   return {text: modifiedText}

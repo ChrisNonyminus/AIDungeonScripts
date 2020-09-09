@@ -159,7 +159,7 @@ const modifier = (text) => {
   state.memory = state.memory + '\nYour traits:\n'+playerTraits
   if(text.includes'/check'){
   state.message = state.message + JSON.stringify(state.memory);
-  modifiedText=''
+  //modifiedText=''
   }
   // You must return an object with the text property defined.
   return {text: modifiedText}

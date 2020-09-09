@@ -31,13 +31,56 @@ const modifier = (text) => {
   var survivalBonus = 0
   var unarmedBonus = 0
   var playerTraits = []
-  if (modifiedText.includes('> You') && playerStrength < 6 && !modifiedText.includes('> You say')||modifiedText.includes('> You') && playerLuck < 6 && !modifiedText.includes('> You say')){
-    modifiedText = "\n> You attempt to " + text.substring(7)
+  if (modifiedText.includes('> You') && !modifiedText.includes('> You say') && !modifiedText.includes('> You talk')){
+    var rng = Math.floor(Math.random() * (110 - (playerLuck*5)))
+    if (rng <= 20)
+    {
+    modifiedText = "\n> You successfully " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 20)
+    {
+    modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    }
   }
-  if (playerCharisma < 6 && modifiedText.includes('> You say'))
+  if (modifiedText.includes('> You say') || modifiedText.includes('> You talk'))
   {
-    modifiedText = "\n> You attempt to " + text.substring(7)
+    var rng = Math.floor(Math.random() * (110 - (playerCharisma*5)))
+    if (rng <= 20)
+    {
+    modifiedText = "\n> You successfully " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    modifiedText = "\n> You try hard to " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 20)
+    {
+    modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    modifiedText = "\n> You embarrassingly fail to " + text.substring(7)
+    }
   }
+  if(!text.includes('> You') && text.includes('Your name is ') || text.includes('You are ') && !text.includes('> You'))
+  {
+  
   for (let i = 0 ; i < 11; i++)
   {
     if (text.includes((i+1)+' Strength') || text.includes('S'+(i+1)) || text.includes('Strength '+(i+1)) || text.includes('STR '+(i+1)))
@@ -146,7 +189,7 @@ const modifier = (text) => {
   {
   unarmedBonus += 15
   }
-  
+}
   if(!text.includes('> You') && text.includes('Your name is ') || text.includes('You are ') && !text.includes('> You'))
   {
   state.memory = state.memory + '\nYou are level '+playerLevel+'.'
@@ -157,9 +200,9 @@ const modifier = (text) => {
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerIntelligence] +' intelligence.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerAgility] +' agility.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerLuck] +' luck.'
-  state.memory = state.memory + '\nYour skills:\nBarter: '+(2+(2*playerCharisma)+(playerLuck/2)+barterBonus)+'\nEnergy Weapons: '+(2+(2*playerPerception)+(playerLuck/2)+energyWepBonus)+'\nExplosives: '+(2+(2*playerPerception)+(playerLuck/2)+explosivesBonus)+'\nGuns: '+(2+(2*playerAgility)+(playerLuck/2)+gunsBonus)+'\nLockpick: '+(2+(2*playerPerception)+(playerLuck/2)+lockpickBonus)+'\nMedicine: '+(2+(2*playerIntelligence)+(playerLuck/2)+medicineBonus)+'\nMelee Weapons: '+(2+(2*playerStrength)+(playerLuck/2)+meleeWepBonus)+'\nRepair: '+(2+(2*playerIntelligence)+(playerLuck/2)+repairBonus)+'\nScience: '+(2+(2*playerIntelligence)+(playerLuck/2)+scienceBonus)+'\nSneak: '+(2+(2*playerAgility)+(playerLuck/2)+sneakBonus)+'\nSpeech: '+(2+(2*playerCharisma)+(playerLuck/2)+speechBonus)+'\nSurvival: '+(2+(2*playerEndurance)+(playerLuck/2)+survivalBonus)+'\nUnarmed: '+(2+(2*playerEndurance)+(playerLuck/2)+unarmedBonus)
   state.memory = state.memory + '\nYour traits:\n'+playerTraits
   }
+  state.memory = state.memory + '\nYour skills:\nBarter: '+(2+(2*playerCharisma)+(playerLuck/2)+barterBonus)+'\nEnergy Weapons: '+(2+(2*playerPerception)+(playerLuck/2)+energyWepBonus)+'\nExplosives: '+(2+(2*playerPerception)+(playerLuck/2)+explosivesBonus)+'\nGuns: '+(2+(2*playerAgility)+(playerLuck/2)+gunsBonus)+'\nLockpick: '+(2+(2*playerPerception)+(playerLuck/2)+lockpickBonus)+'\nMedicine: '+(2+(2*playerIntelligence)+(playerLuck/2)+medicineBonus)+'\nMelee Weapons: '+(2+(2*playerStrength)+(playerLuck/2)+meleeWepBonus)+'\nRepair: '+(2+(2*playerIntelligence)+(playerLuck/2)+repairBonus)+'\nScience: '+(2+(2*playerIntelligence)+(playerLuck/2)+scienceBonus)+'\nSneak: '+(2+(2*playerAgility)+(playerLuck/2)+sneakBonus)+'\nSpeech: '+(2+(2*playerCharisma)+(playerLuck/2)+speechBonus)+'\nSurvival: '+(2+(2*playerEndurance)+(playerLuck/2)+survivalBonus)+'\nUnarmed: '+(2+(2*playerEndurance)+(playerLuck/2)+unarmedBonus)
   
   if(text.includes('check stats') || text.includes('check skills'))
   {

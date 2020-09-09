@@ -31,7 +31,11 @@ const modifier = (text) => {
   var survivalBonus = 0
   var unarmedBonus = 0
   var playerTraits = []
-  if (modifiedText.includes('> You')){
+  if (modifiedText.includes('> You') && playerStrength < 6 && !modifiedText.includes('> You say')||modifiedText.includes('> You') && playerLuck < 6 && !modifiedText.includes('> You say')){
+    modifiedText = "\n> You attempt to " + text.substring(7)
+  }
+  if (playerCharisma < 6 && modifiedText.includes('> You say'))
+  {
     modifiedText = "\n> You attempt to " + text.substring(7)
   }
   for (let i = 0 ; i < 11; i++)

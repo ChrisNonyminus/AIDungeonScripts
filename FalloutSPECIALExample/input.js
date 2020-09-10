@@ -1,9 +1,5 @@
 /*
 */
-const modifier = (text) => {
- 
-  let modifiedText = text
-  var lowered = text.toLowerCase()
   var playerNumericalAttribute = [1,2,3,4,5,6,7,8,9,10]
   var playerAttributeWord = ['pathetic','very bad','bad','poor','average','fair','good','very good','excellent','perfect']
   var playerStrength
@@ -13,24 +9,28 @@ const modifier = (text) => {
   var playerIntelligence
   var playerAgility
   var playerLuck
-  var playerLevel = 1
-  var playerXP = 0
+  var playerLevel 
+  var playerXP 
   var skillPoints = 10+(state.playerIntelligence/2)
   
-  var barterBonus = 0
-  var energyWepBonus = 0
-  var explosivesBonus = 0
-  var gunsBonus = 0
-  var lockpickBonus = 0
-  var medicineBonus = 0
-  var meleeWepBonus = 0
-  var repairBonus = 0
-  var scienceBonus = 0
-  var sneakBonus = 0
-  var speechBonus = 0
+  var barterBonus =0
+  var energyWepBonus =0
+  var explosivesBonus =0
+  var gunsBonus =0
+  var lockpickBonus =0
+  var medicineBonus =0
+  var meleeWepBonus =0
+  var repairBonus =0
+  var scienceBonus=0
+  var sneakBonus=0
+  var speechBonus=0
   var survivalBonus = 0
   var unarmedBonus = 0
   var playerTraits = []
+const modifier = (text) => {
+ 
+  let modifiedText = text
+  var lowered = text.toLowerCase()
   if (modifiedText.includes('> You') && !modifiedText.includes('> You say') && !modifiedText.includes('> You talk')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
     if (rng <= 20)
@@ -78,7 +78,7 @@ const modifier = (text) => {
     modifiedText = "\n> You embarrassingly fail to " + text.substring(7)
     }
   }
-  if(!text.includes('> You') && text.includes('Your name is ') || text.includes('You are ') && !text.includes('> You'))
+  if(!text.includes('> You') || text.includes('Your name is ') || text.includes('You are ') && !text.includes('> You'))
   {
   
   for (let i = 0 ; i < 11; i++)
@@ -190,7 +190,7 @@ const modifier = (text) => {
   state.unarmedBonus += 15
   }
 }
-  state.memory = state.memory + '\nYou are level '+playerLevel+'.'
+  state.memory = state.memory + '\nYou are level '+state.playerLevel+'.'
   if(!text.includes('> You') && text.includes('Your name is ') || text.includes('You are ') && !text.includes('> You'))
   {
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerStrength] +' strength.'
@@ -199,14 +199,15 @@ const modifier = (text) => {
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerCharisma] +' charisma.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerIntelligence] +' intelligence.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerAgility] +' agility.'
-  state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerLuck] +' luck.'
-  state.memory = state.memory + '\nYour skills:\nBarter: '+(2+(2*state.playerCharisma)+(state.playerLuck/2)+state.barterBonus)+'\nEnergy Weapons: '+(2+(2*state.playerPerception)+(state.playerLuck/2)+state.energyWepBonus)+'\nExplosives: '+(2+(2*state.playerPerception)+(state.playerLuck/2)+state.explosivesBonus)+'\nGuns: '+(2+(2*state.playerAgility)+(state.playerLuck/2)+state.gunsBonus)+'\nLockpick: '+(2+(2*state.playerPerception)+(state.playerLuck/2)+state.lockpickBonus)+'\nMedicine: '+(2+(2*state.playerIntelligence)+(state.playerLuck/2)+state.medicineBonus)+'\nMelee Weapons: '+(2+(2*state.playerStrength)+(state.playerLuck/2)+state.meleeWepBonus)+'\nRepair: '+(2+(2*state.playerIntelligence)+(state.playerLuck/2)+state.repairBonus)+'\nScience: '+(2+(2*state.playerIntelligence)+(state.playerLuck/2)+state.scienceBonus)+'\nSneak: '+(2+(2*state.playerAgility)+(state.playerLuck/2)+state.sneakBonus)+'\nSpeech: '+(2+(2*state.playerCharisma)+(state.playerLuck/2)+state.speechBonus)+'\nSurvival: '+(2+(2*state.playerEndurance)+(state.playerLuck/2)+state.survivalBonus)+'\nUnarmed: '+(2+(2*state.playerEndurance)+(state.playerLuck/2)+state.unarmedBonus)
+  state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerLuck] +' luck.'  
   state.memory = state.memory + '\nYour traits:\n'+playerTraits
   }  
+     state.memory = state.memory + '\nYour skills:\nBarter: '+(2+(2*(state.playerCharisma+1))+((state.playerLuck+1)/2)+state.barterBonus)+'\nEnergy Weapons: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.energyWepBonus)+'\nExplosives: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.explosivesBonus)+'\nGuns: '+(2+(2*(state.playerAgility+1))+((state.playerLuck+1)/2)+state.gunsBonus)+'\nLockpick: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.lockpickBonus)+'\nMedicine: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.medicineBonus)+'\nMelee Weapons: '+(2+(2*(state.playerStrength+1))+((state.playerLuck+1)/2)+state.meleeWepBonus)+'\nRepair: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.repairBonus)+'\nScience: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.scienceBonus)+'\nSneak: '+(2+(2*(state.playerAgility+1))+((state.playerLuck+1)/2)+state.sneakBonus)+'\nSpeech: '+(2+(2*(state.playerCharisma+1))+((state.playerLuck+1)/2)+state.speechBonus)+'\nSurvival: '+(2+(2*(state.playerEndurance+1))+((state.playerLuck+1)/2)+state.survivalBonus)+'\nUnarmed: '+(2+(2*(state.playerEndurance+1))+((state.playerLuck+1)/2)+state.unarmedBonus)
+
   if(text.includes('check stats') || text.includes('check skills'))
   {
-    state.message = JSON.stringify(state.memory);
   }
+ state.message = JSON.stringify(state.memory);
   
   // You must return an object with the text property defined.
   return {text: modifiedText}

@@ -45,6 +45,7 @@ const modifier = (text) => {
   var lowered = text.toLowerCase()
   if (modifiedText.includes('> You shoot') || modifiedText.includes('> You fire') || modifiedText.includes('> You pull the trigger')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if(state.Guns >= rng || state.EnergyWeapons >= rng) modifiedText = "\n> You deftly " + text.substring(7)
@@ -71,6 +72,7 @@ const modifier = (text) => {
   }
   else if (modifiedText.includes('> You barter') || modifiedText.includes('> You haggle') || modifiedText.includes('> You sell') || modifiedText.includes('> You offer')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if (state.Barter >= rng) modifiedText = "\n> You successfully " + text.substring(7)
@@ -97,6 +99,7 @@ const modifier = (text) => {
   }
   else if (modifiedText.includes('> You detonate') || modifiedText.includes('> You blow up') || modifiedText.includes('> You destroy') || modifiedText.includes('> You disarm') || modifiedText.includes('> You throw')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if (state.Explosives >= rng) modifiedText = "\n> You deftly " + text.substring(7)
@@ -123,6 +126,7 @@ const modifier = (text) => {
   }
   else if (modifiedText.includes('> You pick') || modifiedText.includes('> You lockpick')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if (state.Lockpick >= rng) modifiedText = "\n> You deftly " + text.substring(7)
@@ -149,6 +153,7 @@ const modifier = (text) => {
   }
   else if (modifiedText.includes('> You heal') || modifiedText.includes('> You patch') || modifiedText.includes('> You ingest')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if (state.Medicine >= rng) modifiedText = "\n> You deftly " + text.substring(7)
@@ -175,6 +180,7 @@ const modifier = (text) => {
   }
   else if (modifiedText.includes('> You swing') || modifiedText.includes('> You stab') || modifiedText.includes('> You strike') || modifiedText.includes('> You attack')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if (state.MeleeWeapons >= rng) modifiedText = "\n> You deftly " + text.substring(7)
@@ -201,6 +207,7 @@ const modifier = (text) => {
   }
   else if (modifiedText.includes('> You repair') || modifiedText.includes('> You fix') || modifiedText.includes('> You craft') || modifiedText.includes('> You make')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if (state.Repair >= rng) modifiedText = "\n> You deftly " + text.substring(7)
@@ -227,6 +234,7 @@ const modifier = (text) => {
   }
   else if (modifiedText.includes('> You hack') || modifiedText.includes('> You teach') || modifiedText.includes('> You figure') || modifiedText.includes('> You use')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if (state.Science >= rng) modifiedText = "\n> You deftly " + text.substring(7)
@@ -253,6 +261,7 @@ const modifier = (text) => {
   }
   else if (modifiedText.includes('> You sneak') || modifiedText.includes('> You hide') || modifiedText.includes('> You stealthily') || modifiedText.includes('> You steal') || modifiedText.includes('> You swipe') || modifiedText.includes('> You mug')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if (state.Sneak >= rng) modifiedText = "\n> You deftly " + text.substring(7)
@@ -279,6 +288,7 @@ const modifier = (text) => {
   }
   else if (modifiedText.includes('> You kick') || modifiedText.includes('> You punch') || modifiedText.includes('> You slam') || modifiedText.includes('> You fight') || modifiedText.includes('> You jab') || modifiedText.includes('> You mug')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if (state.Unarmed >= rng) modifiedText = "\n> You deftly " + text.substring(7)
@@ -305,6 +315,7 @@ const modifier = (text) => {
   }
   else if (modifiedText.includes('> You cook') || modifiedText.includes('> You eat') || modifiedText.includes('> You bake') || modifiedText.includes('> You poison') || modifiedText.includes('> You harvest') || modifiedText.includes('> You defend')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if (state.Survival >= rng) modifiedText = "\n> You deftly " + text.substring(7)
@@ -332,6 +343,7 @@ const modifier = (text) => {
   else if (modifiedText.includes('> You say') || modifiedText.includes('> You talk') || modifiedText.includes('> You persuade') || modifiedText.includes('> You tell') || modifiedText.includes('> You lie') || modifiedText.includes('> You convince'))
   {
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if (state.Speech >= rng) modifiedText = "\n> You successfully " + text.substring(7)
@@ -357,6 +369,7 @@ const modifier = (text) => {
     }
   } else if (modifiedText.includes('> You') && !modifiedText.includes('> You say') && !modifiedText.includes('> You talk')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    modifiedText = "\n> You " + text.substring(7)
     if (rng <= 20)
     {
     if(state.playerLuck >= 8) modifiedText = "\n> You deftly " + text.substring(7)

@@ -35,7 +35,7 @@ const modifier = (text) => {
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
     if (rng <= 20)
     {
-    modifiedText = "\n> You successfully " + text.substring(7)
+    if(state.playerLuck >= 8) modifiedText = "\n> You successfully " + text.substring(7)
     }
     if (rng <= 40 && rng > 20)
     {
@@ -47,11 +47,11 @@ const modifier = (text) => {
     }
     if (rng <= 80 && rng > 50)
     {
-    modifiedText = "\n> You fail to " + text.substring(7)
+    if (state.playerLuck <= 5) modifiedText = "\n> You fail to " + text.substring(7)
     }
     if (rng <= 100 && rng > 80)
     {
-    modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    if (state.playerLuck <= 3) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
     }
   }
   if (modifiedText.includes('> You say') || modifiedText.includes('> You talk') || modifiedText.includes('> You persuade') || modifiedText.includes('> You tell'))
@@ -59,7 +59,7 @@ const modifier = (text) => {
     var rng = Math.floor(Math.random() * (110 - (state.playerCharisma*5)))
     if (rng <= 20)
     {
-    modifiedText = "\n> You successfully " + text.substring(7)
+    if (state.playerCharisma >= 8) modifiedText = "\n> You successfully " + text.substring(7)
     }
     if (rng <= 40 && rng > 20)
     {
@@ -71,11 +71,11 @@ const modifier = (text) => {
     }
     if (rng <= 80 && rng > 50)
     {
-    modifiedText = "\n> You fail to " + text.substring(7)
+    if (state.playerCharisma <= 6) modifiedText = "\n> You fail to " + text.substring(7)
     }
     if (rng <= 100 && rng > 80)
     {
-    modifiedText = "\n> You embarrassingly fail to " + text.substring(7)
+    if (state.playerCharisma <= 4) modifiedText = "\n> You embarrassingly fail to " + text.substring(7)
     }
   }
   if(!text.includes('> You') || text.includes('Your name is ') || text.includes('You are ') && !text.includes('> You'))
@@ -190,9 +190,10 @@ const modifier = (text) => {
   state.unarmedBonus += 15
   }
 }
-  state.memory.context = state.memory.context + '\nYou are level '+state.playerLevel+'.'
   if(!text.includes('> You') && text.includes('Your name is ') || text.includes('You are ') && !text.includes('> You'))
   {
+    state.memory.context = state.memory.context + '\nYou are level '+state.playerLevel+'.'
+  
   state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerStrength] +' strength.'
   state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerPerception] +' perception.'
   state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerEndurance] +' endurance.'

@@ -63,7 +63,7 @@ const modifier = (text) => {
     }
     if (rng <= 40 && rng > 20)
     {
-    modifiedText = "\n> You try hard to " + text.substring(7)
+    modifiedText = "\n> You " + text.substring(7)
     }
     if (rng <= 50 && rng > 20)
     {

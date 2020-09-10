@@ -197,7 +197,7 @@ const modifier = (text) => {
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerPerception] +' perception.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerEndurance] +' endurance.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerCharisma] +' charisma.'
-  state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.stateplayerIntelligence] +' intelligence.'
+  state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerIntelligence] +' intelligence.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerAgility] +' agility.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerLuck] +' luck.'
   state.memory = state.memory + '\nYour traits:\n'+playerTraits

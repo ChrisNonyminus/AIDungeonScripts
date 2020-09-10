@@ -15,7 +15,7 @@ const modifier = (text) => {
   var playerLuck
   var playerLevel = 1
   var playerXP = 0
-  var skillPoints = 10+(playerIntelligence/2)
+  var skillPoints = 10+(state.playerIntelligence/2)
   
   var barterBonus = 0
   var energyWepBonus = 0
@@ -32,7 +32,7 @@ const modifier = (text) => {
   var unarmedBonus = 0
   var playerTraits = []
   if (modifiedText.includes('> You') && !modifiedText.includes('> You say') && !modifiedText.includes('> You talk')){
-    var rng = Math.floor(Math.random() * (110 - (playerLuck*5)))
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
     if (rng <= 20)
     {
     modifiedText = "\n> You successfully " + text.substring(7)
@@ -56,7 +56,7 @@ const modifier = (text) => {
   }
   if (modifiedText.includes('> You say') || modifiedText.includes('> You talk'))
   {
-    var rng = Math.floor(Math.random() * (110 - (playerCharisma*5)))
+    var rng = Math.floor(Math.random() * (110 - (state.playerCharisma*5)))
     if (rng <= 20)
     {
     modifiedText = "\n> You successfully " + text.substring(7)
@@ -85,125 +85,125 @@ const modifier = (text) => {
   {
     if (text.includes((i+1)+' Strength') || text.includes('S'+(i+1)) || text.includes('Strength '+(i+1)) || text.includes('STR '+(i+1)))
     {
-    playerStrength = i
+    state.playerStrength = i
     }
   }
   for (let i = 0 ; i < 11; i++)
   {
     if ((text.includes((i+1)+' Perception') || text.includes('P'+(i+1)) || text.includes('Perception '+(i+1))) || text.includes('PER '+(i+1)))
     {
-    playerPerception = i;
+    state.playerPerception = i;
     }
   }
   for (let i = 0 ; i < 11; i++)
   {
     if ((text.includes((i+1)+' Endurance') || text.includes('E'+(i+1)) || text.includes('Endurance '+(i+1))) || text.includes('END '+(i+1)))
     {
-    playerEndurance = i;
+    state.playerEndurance = i;
     }
   }
   for (let i = 0 ; i < 11; i++)
   {
     if ((text.includes((i+1)+' Charisma') || text.includes('C'+(i+1)) || text.includes('Charisma '+(i+1))) || text.includes('CHR '+(i+1)))
     {
-    playerCharisma = i;
+    state.playerCharisma = i;
     }
   }
   for (let i = 0 ; i < 11; i++)
   {
     if ((text.includes((i+1)+' Intelligence') || text.includes('I'+(i+1)) || text.includes('Intelligence '+(i+1))) || text.includes('INT '+(i+1)))
     {
-    playerIntelligence = i;
+    state.playerIntelligence = i;
     }
   }
   for (let i = 0 ; i < 11; i++)
   {
     if ((text.includes((i+1)+' Agility') || text.includes('A'+(i+1)) || text.includes('Agility '+(i+1))) || text.includes('AGI '+(i+1)))
     {
-    playerAgility = i;
+    state.playerAgility = i;
     }
   }
   for (let i = 0 ; i < 11; i++)
   {
     if ((text.includes((i+1)+' Luck') || text.includes('L'+(i+1)) || text.includes('Luck '+(i+1))) || text.includes('LUC '+(i+1)))
     {
-    playerLuck = i;
+    state.playerLuck = i;
     }
   }
   for (let i = 0 ; i < 11; i++)
   {
     if ((text.includes('You are Level '+(i+1))) || (text.includes('You are now Level '+(i+1))))
     {
-    playerLevel = i+1
+    state.playerLevel = i+1
     }
   }
   if ((text.includes('Barter *')))
   {
-  barterBonus += 15
+  state.barterBonus += 15
   }
   if ((text.includes('Energy Weapons *')))
   {
-  energyWepBonus += 15
+  state.energyWepBonus += 15
   }
   if ((text.includes('Explosives *')))
   {
-  explosivesBonus += 15
+  state.explosivesBonus += 15
   }
   if ((text.includes('Guns *')))
   {
-  gunsBonus += 15
+  state.gunsBonus += 15
   }
   if ((text.includes('Lockpick *')))
   {
-  lockpickBonus += 15
+  state.lockpickBonus += 15
   }
   if ((text.includes('Medicine *')))
   {
-  medicineBonus += 15
+  state.medicineBonus += 15
   }
   if ((text.includes('Melee Weapons *')))
   {
-  meleeWepBonus += 15
+  state.meleeWepBonus += 15
   }
   if ((text.includes('Repair *')))
   {
-  repairBonus += 15
+  state.repairBonus += 15
   }
   if ((text.includes('Science *')))
   {
-  scienceBonus += 15
+  state.scienceBonus += 15
   }
   if ((text.includes('Sneak *')))
   {
-  sneakBonus += 15
+  state.sneakBonus += 15
   }
   if ((text.includes('Speech *')))
   {
-  speechBonus += 15
+  state.speechBonus += 15
   }
   if ((text.includes('Survival *')))
   {
-  survivalBonus += 15
+  state.survivalBonus += 15
   }
   if ((text.includes('Unarmed *')))
   {
-  unarmedBonus += 15
+  state.unarmedBonus += 15
   }
 }
+  state.memory = state.memory + '\nYou are level '+playerLevel+'.'
   if(!text.includes('> You') && text.includes('Your name is ') || text.includes('You are ') && !text.includes('> You'))
   {
-  state.memory = state.memory + '\nYou are level '+playerLevel+'.'
-  state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerStrength] +' strength.'
-  state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerPerception] +' perception.'
-  state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerEndurance] +' endurance.'
-  state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerCharisma] +' charisma.'
-  state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerIntelligence] +' intelligence.'
-  state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerAgility] +' agility.'
-  state.memory = state.memory + '\nYou have '+ playerAttributeWord[playerLuck] +' luck.'
+  state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerStrength] +' strength.'
+  state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerPerception] +' perception.'
+  state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerEndurance] +' endurance.'
+  state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerCharisma] +' charisma.'
+  state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.stateplayerIntelligence] +' intelligence.'
+  state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerAgility] +' agility.'
+  state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerLuck] +' luck.'
   state.memory = state.memory + '\nYour traits:\n'+playerTraits
-  }
-  state.memory = state.memory + '\nYour skills:\nBarter: '+(2+(2*playerCharisma)+(playerLuck/2)+barterBonus)+'\nEnergy Weapons: '+(2+(2*playerPerception)+(playerLuck/2)+energyWepBonus)+'\nExplosives: '+(2+(2*playerPerception)+(playerLuck/2)+explosivesBonus)+'\nGuns: '+(2+(2*playerAgility)+(playerLuck/2)+gunsBonus)+'\nLockpick: '+(2+(2*playerPerception)+(playerLuck/2)+lockpickBonus)+'\nMedicine: '+(2+(2*playerIntelligence)+(playerLuck/2)+medicineBonus)+'\nMelee Weapons: '+(2+(2*playerStrength)+(playerLuck/2)+meleeWepBonus)+'\nRepair: '+(2+(2*playerIntelligence)+(playerLuck/2)+repairBonus)+'\nScience: '+(2+(2*playerIntelligence)+(playerLuck/2)+scienceBonus)+'\nSneak: '+(2+(2*playerAgility)+(playerLuck/2)+sneakBonus)+'\nSpeech: '+(2+(2*playerCharisma)+(playerLuck/2)+speechBonus)+'\nSurvival: '+(2+(2*playerEndurance)+(playerLuck/2)+survivalBonus)+'\nUnarmed: '+(2+(2*playerEndurance)+(playerLuck/2)+unarmedBonus)
-  
+  state.memory = state.memory + '\nYour skills:\nBarter: '+(2+(2*state.playerCharisma)+(state.playerLuck/2)+state.barterBonus)+'\nEnergy Weapons: '+(2+(2*state.playerPerception)+(state.playerLuck/2)+state.energyWepBonus)+'\nExplosives: '+(2+(2*state.playerPerception)+(state.playerLuck/2)+state.explosivesBonus)+'\nGuns: '+(2+(2*state.playerAgility)+(state.playerLuck/2)+state.gunsBonus)+'\nLockpick: '+(2+(2*state.playerPerception)+(state.playerLuck/2)+state.lockpickBonus)+'\nMedicine: '+(2+(2*state.playerIntelligence)+(state.playerLuck/2)+state.medicineBonus)+'\nMelee Weapons: '+(2+(2*state.playerStrength)+(state.playerLuck/2)+state.meleeWepBonus)+'\nRepair: '+(2+(2*state.playerIntelligence)+(state.playerLuck/2)+state.repairBonus)+'\nScience: '+(2+(2*state.playerIntelligence)+(state.playerLuck/2)+state.scienceBonus)+'\nSneak: '+(2+(2*state.playerAgility)+(state.playerLuck/2)+state.sneakBonus)+'\nSpeech: '+(2+(2*state.playerCharisma)+(state.playerLuck/2)+state.speechBonus)+'\nSurvival: '+(2+(2*state.playerEndurance)+(state.playerLuck/2)+state.survivalBonus)+'\nUnarmed: '+(2+(2*state.playerEndurance)+(state.playerLuck/2)+state.unarmedBonus)
+
+  }  
   if(text.includes('check stats') || text.includes('check skills'))
   {
     state.message = JSON.stringify(state.memory);

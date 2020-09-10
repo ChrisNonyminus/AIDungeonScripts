@@ -478,7 +478,7 @@ const modifier = (text) => {
   state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerIntelligence+1] +' intelligence.'
   state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerAgility+1] +' agility.'
   state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerLuck+1] +' luck.' 
-  state.memory.context = state.memory.context + '\nYour skills:\nBarter: '+state.Barter+'\nEnergy Weapons: '+state.EnergyWeapons+'\nExplosives: '+state.Explosives+'\nGuns: '+Guns+'\nLockpick: '+Lockpick+'\nMedicine: '+Medicine+'\nMelee Weapons: '+MeleeWeapons+'\nRepair: '+Repair+'\nScience: '+Science+'\nSneak: '+Sneak+'\nSpeech: '+Speech+'\nSurvival: '+Survival+'\nUnarmed: '+Unarmed
+  state.memory.context = state.memory.context + '\nYour skills:\nBarter: '+state.Barter+'\nEnergy Weapons: '+state.EnergyWeapons+'\nExplosives: '+state.Explosives+'\nGuns: '+state.Guns+'\nLockpick: '+state.Lockpick+'\nMedicine: '+state.Medicine+'\nMelee Weapons: '+state.MeleeWeapons+'\nRepair: '+state.Repair+'\nScience: '+state.Science+'\nSneak: '+state.Sneak+'\nSpeech: '+state.Speech+'\nSurvival: '+state.Survival+'\nUnarmed: '+state.Unarmed
   state.memory.context = state.memory.context + '\nYour traits:\n'+playerTraits
   }  
   if(text.includes('check stats') || text.includes('check skills'))

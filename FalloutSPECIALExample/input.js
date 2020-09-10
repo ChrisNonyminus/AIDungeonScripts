@@ -43,51 +43,303 @@ const modifier = (text) => {
   var playerTraits = []
   let modifiedText = text
   var lowered = text.toLowerCase()
-  if (modifiedText.includes('> You') && !modifiedText.includes('> You say') && !modifiedText.includes('> You talk')){
+  if (modifiedText.includes('> You shoot') || modifiedText.includes('> You fire') || modifiedText.includes('> You pull the trigger')){
     var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
     if (rng <= 20)
     {
-    if(state.playerLuck >= 8) modifiedText = "\n> You successfully " + text.substring(7)
+    if(state.Guns >= rng || state.EnergyWeapons >= rng) modifiedText = "\n> You deftly " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if(state.Guns >= rng || state.EnergyWeapons >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if(state.Guns <= rng || state.EnergyWeapons <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if(state.Guns <= rng || state.EnergyWeapons <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if(state.Guns <= rng || state.EnergyWeapons <= rng)  modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    }
+  }
+  else if (modifiedText.includes('> You barter') || modifiedText.includes('> You haggle') || modifiedText.includes('> You sell') || modifiedText.includes('> You offer')){
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if (state.Speech >= rng) modifiedText = "\n> You successfully " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if (state.Speech >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if (state.Speech <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if (state.Speech <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if (state.Speech <= rng) modifiedText = "\n> You embarrassingly fail to " + text.substring(7)
+    }
+  }
+  else if (modifiedText.includes('> You detonate') || modifiedText.includes('> You blow up') || modifiedText.includes('> You destroy') || modifiedText.includes('> You disarm') || modifiedText.includes('> You throw')){
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if (state.Explosives >= rng) modifiedText = "\n> You deftly " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if (state.Explosives >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if (state.Explosives <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if (state.Explosives <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if (state.Explosives <= rng) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    }
+  }
+  else if (modifiedText.includes('> You pick') || modifiedText.includes('> You lockpick')){
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if (state.Lockpick >= rng) modifiedText = "\n> You deftly " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if (state.Lockpick >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if (state.Lockpick <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if (state.Lockpick <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if (state.Lockpick <= rng) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    }
+  }
+  else if (modifiedText.includes('> You heal') || modifiedText.includes('> You patch') || modifiedText.includes('> You ingest')){
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if (state.Medicine >= rng) modifiedText = "\n> You deftly " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if (state.Medicine >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if (state.Medicine <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if (state.Medicine <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if (state.Medicine <= rng) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    }
+  }
+  else if (modifiedText.includes('> You swing') || modifiedText.includes('> You stab') || modifiedText.includes('> You strike') || modifiedText.includes('> You attack')){
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if (state.MeleeWeapons >= rng) modifiedText = "\n> You deftly " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if (state.MeleeWeapons >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if (state.MeleeWeapons <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if (state.MeleeWeapons <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if (state.MeleeWeapons <= rng) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    }
+  }
+  else if (modifiedText.includes('> You repair') || modifiedText.includes('> You fix') || modifiedText.includes('> You craft') || modifiedText.includes('> You make')){
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if (state.Repair >= rng) modifiedText = "\n> You deftly " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if (state.Repair >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if (state.Repair <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if (state.Repair <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if (state.Repair <= rng) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    }
+  }
+  else if (modifiedText.includes('> You hack') || modifiedText.includes('> You teach') || modifiedText.includes('> You figure') || modifiedText.includes('> You use')){
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if (state.Science >= rng) modifiedText = "\n> You deftly " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if (state.Science >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if (state.Science <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if (state.Science <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if (state.Science <= rng) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    }
+  }
+  else if (modifiedText.includes('> You sneak') || modifiedText.includes('> You hide') || modifiedText.includes('> You stealthily') || modifiedText.includes('> You steal') || modifiedText.includes('> You swipe') || modifiedText.includes('> You mug')){
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if (state.Sneak >= rng) modifiedText = "\n> You deftly " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if (state.Sneak >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if (state.Sneak <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if (state.Sneak <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if (state.Sneak <= rng) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    }
+  }
+  else if (modifiedText.includes('> You kick') || modifiedText.includes('> You punch') || modifiedText.includes('> You slam') || modifiedText.includes('> You fight') || modifiedText.includes('> You jab') || modifiedText.includes('> You mug')){
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if (state.Unarmed >= rng) modifiedText = "\n> You deftly " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if (state.Unarmed >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if (state.Unarmed <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if (state.Unarmed <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if (state.Unarmed <= rng) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    }
+  }
+  else if (modifiedText.includes('> You cook') || modifiedText.includes('> You eat') || modifiedText.includes('> You bake') || modifiedText.includes('> You poison') || modifiedText.includes('> You harvest') || modifiedText.includes('> You defend')){
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if (state.Survival >= rng) modifiedText = "\n> You deftly " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if (state.Survival >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if (state.Survival <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if (state.Survival <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if (state.Survival <= rng) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
+    }
+  }
+  else if (modifiedText.includes('> You say') || modifiedText.includes('> You talk') || modifiedText.includes('> You persuade') || modifiedText.includes('> You tell') || modifiedText.includes('> You lie') || modifiedText.includes('> You convince'))
+  {
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if (state.Speech >= rng) modifiedText = "\n> You successfully " + text.substring(7)
+    }
+    if (rng <= 40 && rng > 20)
+    {
+    if (state.Speech >= rng) modifiedText = "\n> You " + text.substring(7)
+    }
+    if (rng <= 50 && rng > 40)
+    {
+    if (state.Speech <= rng) modifiedText = "\n> You try to " + text.substring(7)
+    }
+    if (rng <= 80 && rng > 50)
+    {
+    if (state.Speech <= rng) modifiedText = "\n> You fail to " + text.substring(7)
+    }
+    if (rng <= 100 && rng > 80)
+    {
+    if (state.Speech <= rng) modifiedText = "\n> You embarrassingly fail to " + text.substring(7)
+    }
+  } else if (modifiedText.includes('> You') && !modifiedText.includes('> You say') && !modifiedText.includes('> You talk')){
+    var rng = Math.floor(Math.random() * (110 - (state.playerLuck*5)))
+    if (rng <= 20)
+    {
+    if(state.playerLuck >= 8) modifiedText = "\n> You deftly " + text.substring(7)
     }
     if (rng <= 40 && rng > 20)
     {
     modifiedText = "\n> You " + text.substring(7)
     }
-    if (rng <= 50 && rng > 20)
+    if (rng <= 60 && rng > 20)
     {
     modifiedText = "\n> You try to " + text.substring(7)
     }
-    if (rng <= 80 && rng > 50)
+    if (rng <= 80 && rng > 60)
     {
-    if (state.playerLuck <= 5) modifiedText = "\n> You fail to " + text.substring(7)
+    if (state.playerLuck <= 4) modifiedText = "\n> You fail to " + text.substring(7)
     }
     if (rng <= 100 && rng > 80)
     {
-    if (state.playerLuck <= 3) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
-    }
-  }
-  if (modifiedText.includes('> You say') || modifiedText.includes('> You talk') || modifiedText.includes('> You persuade') || modifiedText.includes('> You tell'))
-  {
-    var rng = Math.floor(Math.random() * (110 - (state.playerCharisma*5)))
-    if (rng <= 20)
-    {
-    if (state.playerCharisma >= 8 || state.Speech >= rng) modifiedText = "\n> You successfully " + text.substring(7)
-    }
-    if (rng <= 40 && rng > 20)
-    {
-    if (state.playerCharisma > 2 && state.playerCharisma <= 8 || state.Speech >= rng) modifiedText = "\n> You " + text.substring(7)
-    }
-    if (rng <= 50 && rng > 20)
-    {
-    if (state.playerCharisma > 2 && state.playerCharisma <= 8) modifiedText = "\n> You try to " + text.substring(7)
-    }
-    if (rng <= 80 && rng > 50)
-    {
-    if (state.playerCharisma <= 6 || state.Speech <= rng) modifiedText = "\n> You fail to " + text.substring(7)
-    }
-    if (rng <= 100 && rng > 80)
-    {
-    if (state.playerCharisma <= 4 || state.Speech <= rng) modifiedText = "\n> You embarrassingly fail to " + text.substring(7)
+    if (state.playerLuck <= 2) modifiedText = "\n> You spectacularly fail to " + text.substring(7)
     }
   }
   if(!text.includes('> You') || text.includes('Your name is ') || text.includes('You are ') && !text.includes('> You'))

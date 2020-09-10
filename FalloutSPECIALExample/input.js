@@ -54,7 +54,7 @@ const modifier = (text) => {
     modifiedText = "\n> You spectacularly fail to " + text.substring(7)
     }
   }
-  if (modifiedText.includes('> You say') || modifiedText.includes('> You talk'))
+  if (modifiedText.includes('> You say') || modifiedText.includes('> You talk') || modifiedText.includes('> You persuade') || modifiedText.includes('> You tell'))
   {
     var rng = Math.floor(Math.random() * (110 - (state.playerCharisma*5)))
     if (rng <= 20)

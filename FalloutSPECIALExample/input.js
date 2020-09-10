@@ -190,18 +190,18 @@ const modifier = (text) => {
   state.unarmedBonus += 15
   }
 }
-  state.memory.frontMemory = state.memory.frontMemory + '\nYou are level '+state.playerLevel+'.'
+  state.memory.context = state.memory.context + '\nYou are level '+state.playerLevel+'.'
   if(!text.includes('> You') && text.includes('Your name is ') || text.includes('You are ') && !text.includes('> You'))
   {
-  state.memory.frontMemory = state.memory.frontMemory + '\nYou have '+ playerAttributeWord[state.playerStrength] +' strength.'
-  state.memory.frontMemory = state.memory.frontMemory + '\nYou have '+ playerAttributeWord[state.playerPerception] +' perception.'
-  state.memory.frontMemory = state.memory.frontMemory + '\nYou have '+ playerAttributeWord[state.playerEndurance] +' endurance.'
-  state.memory.frontMemory = state.memory.frontMemory + '\nYou have '+ playerAttributeWord[state.playerCharisma] +' charisma.'
-  state.memory.frontMemory = state.memory.frontMemory + '\nYou have '+ playerAttributeWord[state.playerIntelligence] +' intelligence.'
-  state.memory.frontMemory = state.memory.frontMemory + '\nYou have '+ playerAttributeWord[state.playerAgility] +' agility.'
-  state.memory.frontMemory = state.memory.frontMemory + '\nYou have '+ playerAttributeWord[state.playerLuck] +' luck.'  
-  state.memory.frontMemory = state.memory.frontMemory + '\nYour skills:\nBarter: '+(2+(2*(state.playerCharisma+1))+((state.playerLuck+1)/2)+state.barterBonus)+'\nEnergy Weapons: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.energyWepBonus)+'\nExplosives: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.explosivesBonus)+'\nGuns: '+(2+(2*(state.playerAgility+1))+((state.playerLuck+1)/2)+state.gunsBonus)+'\nLockpick: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.lockpickBonus)+'\nMedicine: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.medicineBonus)+'\nMelee Weapons: '+(2+(2*(state.playerStrength+1))+((state.playerLuck+1)/2)+state.meleeWepBonus)+'\nRepair: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.repairBonus)+'\nScience: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.scienceBonus)+'\nSneak: '+(2+(2*(state.playerAgility+1))+((state.playerLuck+1)/2)+state.sneakBonus)+'\nSpeech: '+(2+(2*(state.playerCharisma+1))+((state.playerLuck+1)/2)+state.speechBonus)+'\nSurvival: '+(2+(2*(state.playerEndurance+1))+((state.playerLuck+1)/2)+state.survivalBonus)+'\nUnarmed: '+(2+(2*(state.playerEndurance+1))+((state.playerLuck+1)/2)+state.unarmedBonus)
-  state.memory.frontMemory = state.memory.frontMemory + '\nYour traits:\n'+playerTraits
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerStrength] +' strength.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerPerception] +' perception.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerEndurance] +' endurance.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerCharisma] +' charisma.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerIntelligence] +' intelligence.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerAgility] +' agility.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerLuck] +' luck.'  
+  state.memory.context = state.memory.context + '\nYour skills:\nBarter: '+(2+(2*(state.playerCharisma+1))+((state.playerLuck+1)/2)+state.barterBonus)+'\nEnergy Weapons: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.energyWepBonus)+'\nExplosives: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.explosivesBonus)+'\nGuns: '+(2+(2*(state.playerAgility+1))+((state.playerLuck+1)/2)+state.gunsBonus)+'\nLockpick: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.lockpickBonus)+'\nMedicine: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.medicineBonus)+'\nMelee Weapons: '+(2+(2*(state.playerStrength+1))+((state.playerLuck+1)/2)+state.meleeWepBonus)+'\nRepair: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.repairBonus)+'\nScience: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.scienceBonus)+'\nSneak: '+(2+(2*(state.playerAgility+1))+((state.playerLuck+1)/2)+state.sneakBonus)+'\nSpeech: '+(2+(2*(state.playerCharisma+1))+((state.playerLuck+1)/2)+state.speechBonus)+'\nSurvival: '+(2+(2*(state.playerEndurance+1))+((state.playerLuck+1)/2)+state.survivalBonus)+'\nUnarmed: '+(2+(2*(state.playerEndurance+1))+((state.playerLuck+1)/2)+state.unarmedBonus)
+  state.memory.context = state.memory.context + '\nYour traits:\n'+playerTraits
   }  
   if(text.includes('check stats') || text.includes('check skills'))
   {

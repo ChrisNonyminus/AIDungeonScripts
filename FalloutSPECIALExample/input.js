@@ -471,13 +471,13 @@ const modifier = (text) => {
   {
     state.memory.context = state.memory.context + '\nYou are level '+state.playerLevel+'.'
   
-  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerStrength+1] +' strength.'
-  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerPerception+1] +' perception.'
-  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerEndurance+1] +' endurance.'
-  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerCharisma+1] +' charisma.'
-  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerIntelligence+1] +' intelligence.'
-  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerAgility+1] +' agility.'
-  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerLuck+1] +' luck.' 
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerStrength-1] +' strength.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerPerception-1] +' perception.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerEndurance-1] +' endurance.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerCharisma-1] +' charisma.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerIntelligence-1] +' intelligence.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerAgility-1] +' agility.'
+  state.memory.context = state.memory.context + '\nYou have '+ playerAttributeWord[state.playerLuck-1] +' luck.'
   state.memory.context = state.memory.context + '\nYour skills:\nBarter: '+state.Barter+'\nEnergy Weapons: '+state.EnergyWeapons+'\nExplosives: '+state.Explosives+'\nGuns: '+state.Guns+'\nLockpick: '+state.Lockpick+'\nMedicine: '+state.Medicine+'\nMelee Weapons: '+state.MeleeWeapons+'\nRepair: '+state.Repair+'\nScience: '+state.Science+'\nSneak: '+state.Sneak+'\nSpeech: '+state.Speech+'\nSurvival: '+state.Survival+'\nUnarmed: '+state.Unarmed
   state.memory.context = state.memory.context + '\nYour traits:\n'+playerTraits
   }  

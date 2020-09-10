@@ -200,9 +200,8 @@ const modifier = (text) => {
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerIntelligence] +' intelligence.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerAgility] +' agility.'
   state.memory = state.memory + '\nYou have '+ playerAttributeWord[state.playerLuck] +' luck.'
-  state.memory = state.memory + '\nYour traits:\n'+playerTraits
   state.memory = state.memory + '\nYour skills:\nBarter: '+(2+(2*state.playerCharisma)+(state.playerLuck/2)+state.barterBonus)+'\nEnergy Weapons: '+(2+(2*state.playerPerception)+(state.playerLuck/2)+state.energyWepBonus)+'\nExplosives: '+(2+(2*state.playerPerception)+(state.playerLuck/2)+state.explosivesBonus)+'\nGuns: '+(2+(2*state.playerAgility)+(state.playerLuck/2)+state.gunsBonus)+'\nLockpick: '+(2+(2*state.playerPerception)+(state.playerLuck/2)+state.lockpickBonus)+'\nMedicine: '+(2+(2*state.playerIntelligence)+(state.playerLuck/2)+state.medicineBonus)+'\nMelee Weapons: '+(2+(2*state.playerStrength)+(state.playerLuck/2)+state.meleeWepBonus)+'\nRepair: '+(2+(2*state.playerIntelligence)+(state.playerLuck/2)+state.repairBonus)+'\nScience: '+(2+(2*state.playerIntelligence)+(state.playerLuck/2)+state.scienceBonus)+'\nSneak: '+(2+(2*state.playerAgility)+(state.playerLuck/2)+state.sneakBonus)+'\nSpeech: '+(2+(2*state.playerCharisma)+(state.playerLuck/2)+state.speechBonus)+'\nSurvival: '+(2+(2*state.playerEndurance)+(state.playerLuck/2)+state.survivalBonus)+'\nUnarmed: '+(2+(2*state.playerEndurance)+(state.playerLuck/2)+state.unarmedBonus)
-
+  state.memory = state.memory + '\nYour traits:\n'+playerTraits
   }  
   if(text.includes('check stats') || text.includes('check skills'))
   {

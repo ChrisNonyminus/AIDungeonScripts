@@ -538,7 +538,6 @@ const modifier = (text) => {
  state.message = JSON.stringify(state.memory)
   }else
   state.message = state.message
-  if 
   
   // You must return an object with the text property defined.
   return {text: modifiedText}

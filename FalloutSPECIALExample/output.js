@@ -1,7 +1,3 @@
-/*
-Increases skills upon level up and hopefully distributes a random perk; press enter when it says you gain a random perk
-
-*/
 
 // Checkout the repo examples to get an idea of other ways you can use scripting 
 // https://github.com/AIDungeon/Scripting/blob/master/examples
@@ -14,6 +10,8 @@ const modifier = (text) => {
   {
     if ((text.includes('You are Level '+(i+1))) || (text.includes('You are now Level '+(i+1))))
     {
+     state.memory = state.memory + '\nYour skills:\nBarter: '+(2+(2*(state.playerCharisma+1))+((state.playerLuck+1)/2)+state.barterBonus)+'\nEnergy Weapons: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.energyWepBonus)+'\nExplosives: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.explosivesBonus)+'\nGuns: '+(2+(2*(state.playerAgility+1))+((state.playerLuck+1)/2)+state.gunsBonus)+'\nLockpick: '+(2+(2*(state.playerPerception+1))+((state.playerLuck+1)/2)+state.lockpickBonus)+'\nMedicine: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.medicineBonus)+'\nMelee Weapons: '+(2+(2*(state.playerStrength+1))+((state.playerLuck+1)/2)+state.meleeWepBonus)+'\nRepair: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.repairBonus)+'\nScience: '+(2+(2*(state.playerIntelligence+1))+((state.playerLuck+1)/2)+state.scienceBonus)+'\nSneak: '+(2+(2*(state.playerAgility+1))+((state.playerLuck+1)/2)+state.sneakBonus)+'\nSpeech: '+(2+(2*(state.playerCharisma+1))+((state.playerLuck+1)/2)+state.speechBonus)+'\nSurvival: '+(2+(2*(state.playerEndurance+1))+((state.playerLuck+1)/2)+state.survivalBonus)+'\nUnarmed: '+(2+(2*(state.playerEndurance+1))+((state.playerLuck+1)/2)+state.unarmedBonus)
+
      state.playerLevel = i+1
     }
     if ((text.includes('You gain '+ (i+1) +' XP'))||(text.includes('You gain '+ (i+1) +' EXP'))||(text.includes('You gain '+ (i+1) +' experience')))
@@ -39,6 +37,7 @@ const modifier = (text) => {
     state.unarmedBonus += state.skillPoints/2
     state.playerXP = 0
   }
+ state.message = JSON.stringify(state.memory);
     // You must return an object with the text property defined. 
     return {text: modifiedText}
 }

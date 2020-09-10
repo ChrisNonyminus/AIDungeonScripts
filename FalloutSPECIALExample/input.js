@@ -13,9 +13,9 @@
   var playerXP 
   var skillPoints = 10+(state.playerIntelligence/2)
   
-  const barterBonus =0
-  const energyWepBonus =0
-  const explosivesBonus =0
+  var barterBonus =0
+  var energyWepBonus =0
+  var explosivesBonus =0
   var gunsBonus =0
   var lockpickBonus =0
   var medicineBonus =0
